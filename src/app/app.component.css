@@ -1,0 +1,13 @@
+.main_container {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #ead8db;
+}
+
+.required {
+  color: red;
+}
+.title {
+  background-color: #ead8db;
+  margin: 20px;
+}

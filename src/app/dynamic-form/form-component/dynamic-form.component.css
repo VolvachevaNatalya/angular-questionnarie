@@ -1,0 +1,14 @@
+.single_question {
+  margin: 20px;
+  background-color: white;
+  font-size: 22px;
+  padding: 20px;
+}
+.submit {
+  background-color: #2e2ee8;
+  color: white;
+}
+.submit:disabled {
+  background-color: #bebee5;
+}
+

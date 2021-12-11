@@ -1,0 +1,42 @@
+<div [formGroup]="form">
+  <label [attr.for]="question.key">{{question.label}}<span class="required" *ngIf="question?.required">*</span></label>
+
+  <div [ngSwitch]="question.controlType">
+
+    <input *ngSwitchCase="controlType.TEXT_BOX" [formControlName]="question.key"
+           [id]="question.key" [type]="question.inputType">
+
+    <select [id]="question.key" *ngSwitchCase="controlType.DROPDOWN" [formControlName]="question.key">
+      <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+    </select>
+
+    <div *ngSwitchCase="controlType.RADIO">
+      radio
+      <label *ngFor="let opt of question.options">
+        <input
+          class="form-control"
+          type="radio"
+          [name]="question.key"
+          [formControlName]="question.key"
+          [value]="opt.value">
+        {{opt.key}}
+      </label>
+
+      <label *ngIf="question.freeText">
+        <input
+               class="form-control"
+               type="radio"
+               [name]="question.key"
+               [formControlName]="question.key"
+               [value]="freeTextInput.value">
+        {{question.freeText.value}}
+        <input #freeTextInput type="text" (input)="form.controls[question.key].setValue(freeTextInput.value)">
+        {{freeTextInput.value }}
+      </label>
+
+    </div>
+
+  </div>
+
+<!--  <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>-->
+</div>
