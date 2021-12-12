@@ -9,8 +9,9 @@ export class QuestionControlService {
 
   constructor() { }
 
-  toFormGroup(questions: QuestionBase<string>[] ) {
+  toFormGroup(questions: QuestionBase<string>[]) {
     const group: any = {};
+    console.log(questions);
 
     questions.forEach(question => {
       group[question.key] = question.required

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuestionService} from "./service/question.service";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {QuestionBase} from "./dynamic-form/questionTypes/question-base";
 
 @Component({
@@ -11,12 +11,17 @@ import {QuestionBase} from "./dynamic-form/questionTypes/question-base";
   providers:  [QuestionService]
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'GoTech';
   questions$: Observable<QuestionBase<any>[]> | undefined;
 
-  constructor(service: QuestionService) {
-    this.questions$ = service.getQuestions();
+  constructor(private service: QuestionService) {
+    this.questions$ = this.service.getQuestions(1);
   }
+
+  ngOnInit(): void {
+
+  }
+
 
 }

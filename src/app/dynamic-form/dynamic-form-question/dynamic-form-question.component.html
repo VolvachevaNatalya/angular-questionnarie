@@ -1,40 +1,35 @@
 <div [formGroup]="form">
-  <label [attr.for]="question.key">{{question.label}}<span class="required" *ngIf="question?.required">*</span></label>
-
   <div [ngSwitch]="question.controlType">
+    <mat-form-field *ngSwitchCase="controlType.TEXT_BOX" appearance="fill">
+      <mat-label>{{question.label}} <span class="required" *ngIf="question?.required">*</span> </mat-label>
+      <input matInput [formControlName]="question.key"
+             [id]="question.key" [type]="question.inputType">
+    </mat-form-field>
 
-    <input *ngSwitchCase="controlType.TEXT_BOX" [formControlName]="question.key"
-           [id]="question.key" [type]="question.inputType">
+    <mat-form-field *ngSwitchCase="controlType.DROPDOWN" appearance="fill">
+      <mat-label>{{question.label}} <span class="required" *ngIf="question?.required">*</span> </mat-label>
+      <mat-select [formControlName]="question.key">
+        <mat-option *ngFor="let opt of question.options" [value]="opt.key">
+          {{opt.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <select [id]="question.key" *ngSwitchCase="controlType.DROPDOWN" [formControlName]="question.key">
-      <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
-    </select>
-
-    <div *ngSwitchCase="controlType.RADIO">
-      radio
-      <label *ngFor="let opt of question.options">
-        <input
-          class="form-control"
-          type="radio"
-          [name]="question.key"
-          [formControlName]="question.key"
-          [value]="opt.value">
+    <mat-radio-group *ngSwitchCase="controlType.RADIO" [name]="question.key" [formControlName]="question.key"
+                     class="radio-group">
+      <mat-label >{{question.label}}<span class="required" *ngIf="question?.required">*</span></mat-label>
+      <mat-radio-button *ngFor="let opt of question.options" [value]="opt.value" class="radio-button" >
         {{opt.key}}
-      </label>
+      </mat-radio-button>
 
-      <label *ngIf="question.freeText">
-        <input
-               class="form-control"
-               type="radio"
-               [name]="question.key"
-               [formControlName]="question.key"
-               [value]="freeTextInput.value">
-        {{question.freeText.value}}
-        <input #freeTextInput type="text" (input)="form.controls[question.key].setValue(freeTextInput.value)">
-        {{freeTextInput.value }}
-      </label>
+      <mat-radio-button *ngIf="question.freeText" #freeTextRadioButton class="radio-button">
+        {{question.freeText.key}}
+        <mat-form-field appearance="standard" class="freetext-form-field">
+          <input matInput [formControlName]="question.key" (click)="freeTextRadioButton.checked=true">
+        </mat-form-field>
+      </mat-radio-button>
 
-    </div>
+    </mat-radio-group>
 
   </div>
 

@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {QuestionBase} from "../questionTypes/question-base";
 import {ControlType} from "../questionTypes/control-type";
-import {RadioButtonsQuestion} from "../questionTypes/radio-buttons-question";
 
 @Component({
   selector: 'app-dynamic-form-question',
@@ -10,7 +9,7 @@ import {RadioButtonsQuestion} from "../questionTypes/radio-buttons-question";
   styleUrls: ['./dynamic-form-question.component.css']
 })
 export class DynamicFormQuestionComponent implements OnInit {
-  controlType = ControlType
+  controlType = ControlType;
   @Input() question!: QuestionBase<string>;
   @Input() form!: FormGroup;
 
@@ -18,13 +17,5 @@ export class DynamicFormQuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  clearOther() {
-    console.log(this.form.controls[this.question.key])
-  }
-
-  disableOther() {
-
   }
 }

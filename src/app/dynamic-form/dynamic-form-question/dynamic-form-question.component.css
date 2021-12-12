@@ -5,3 +5,31 @@ label {
 .required {
   color: red;
 }
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}
+
+.freetext-form-field ::ng-deep .mat-form-field-infix {
+  padding: 0;
+  border-top: 0 solid transparent;
+}
+
+.freetext-form-field ::ng-deep .mat-form-field-flex {
+  padding-top: 0;
+}
+
+.freetext-form-field ::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.freetext-form-field ::ng-deep .mat-form-field-underline {
+  bottom: -0.3em;
+}
+

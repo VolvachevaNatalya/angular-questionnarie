@@ -1,8 +1,8 @@
-<div class="main_container">
+<div class="main_container" *ngIf="questions$ | async as questions">
   <div class="title">
     <h2>GoTech Questionnaire</h2>
     <p>Show me what you got!</p>
     <p class="required">* Required</p>
   </div>
-  <app-dynamic-form [questions]="questions$ | async"></app-dynamic-form>
+  <app-dynamic-form [questions]="questions"></app-dynamic-form>
 </div>

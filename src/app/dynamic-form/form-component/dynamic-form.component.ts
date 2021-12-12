@@ -10,7 +10,8 @@ import {RadioButtonsQuestion} from "../questionTypes/radio-buttons-question";
   styleUrls: ['./dynamic-form.component.css']
 })
 export class DynamicFormComponent implements OnInit {
-  @Input() questions: QuestionBase<string>[] | null = [];
+  @Input()
+  questions: QuestionBase<string>[] | undefined;
   form!: FormGroup;
   payLoad = '';
 
