@@ -44,9 +44,7 @@
           ],
           "required": true,
           "order": 2,
-          "freeText": {
-            "key": "Other:"
-          }
+          "freeText": "Other:"
         },
         {
           "controlType": "dropdown",

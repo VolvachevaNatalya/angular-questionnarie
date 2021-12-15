@@ -23,7 +23,7 @@
       </mat-radio-button>
 
       <mat-radio-button *ngIf="question.freeText" #freeTextRadioButton class="radio-button">
-        {{question.freeText.key}}
+        {{question.freeText}}
         <mat-form-field appearance="standard" class="freetext-form-field">
           <input matInput [formControlName]="question.key" (click)="freeTextRadioButton.checked=true">
         </mat-form-field>

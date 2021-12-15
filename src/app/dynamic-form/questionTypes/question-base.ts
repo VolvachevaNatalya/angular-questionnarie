@@ -7,7 +7,7 @@ export interface QuestionBaseOptions<T> {
   controlType?: string;
   inputType?: string;
   options?: {key: string, value: string}[];
-  freeText?: {key: string};
+  freeText?: string;
 }
 
 export class QuestionBase<T> {
@@ -19,7 +19,7 @@ export class QuestionBase<T> {
   controlType: string;
   inputType: string;
   options: {key: string, value: string}[];
-  freeText?: {key: string};
+  freeText?: string;
 
   constructor(options: QuestionBaseOptions<T> = {}) {
     this.value = options.value;
